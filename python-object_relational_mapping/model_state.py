@@ -1,18 +1,22 @@
 #!/usr/bin/python3
+# python file that contains the class definition of a 'State',
 """
-Contains State class and Base, an instance of declarative_base()
+    An instance 'Base = declarative_base()'
+    import 'sys' & 'MySQLdb'
 """
-from sqlalchemy import Column, Integer, String, MetaData
+
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
-mymetadata = MetaData()
-Base = declarative_base(metadata=mymetadata)
+Base = declarative_base()
 
 
 class State(Base):
+    """Represents a state for a MySQL database.
+    __tablename__ (str): The name of the MySQL table to store States.
+    id (sqlalchemy.Integer): The state's id.
+    name (sqlalchemy.String): The state's name.
     """
-    Class with id and name attributes of each state
-    """
-    __tablename__ = 'states'
-    id = Column(Integer, unique=True, nullable=False, primary_key=True)
+    __tablename__ = "states"
+    id = Column(Integer, primary_key=True)
     name = Column(String(128), nullable=False)
